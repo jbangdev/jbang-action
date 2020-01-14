@@ -1,5 +1,8 @@
 name: 'Java Scripting w/jbang'
 description: 'Run java as scripts with https:/github.com/maxandersen/jbang from your github repo'
+branding:
+  icon: hash
+  color: red
 inputs:
   script:
       description: 'Script file to run'
