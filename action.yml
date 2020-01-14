@@ -1,0 +1,15 @@
+name: 'jbang'
+description: 'Run java as scripts with https:/github.com/maxandersen/jbang from your github repo'
+inputs:
+  script:
+      description: 'Script file to run'
+      required: true
+  args:
+      description: 'arguments to pass on to the script'
+      required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.script }}
+    - ${{ inputs.args }}

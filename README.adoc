@@ -1,0 +1,13 @@
+# jbang github action
+
+Action is intended for quick and easily run java based scripts with https://github.com/maxandersen/jbang[jbang].
+
+## Inputs
+
+## Outputs
+
+## Example usage
+
+```
+uses: maxandersen/jbang-action
+``
