@@ -8,6 +8,21 @@ Action is intended for quick and easily run java based scripts with https://gith
 
 ## Example usage
 
+Here it is assumed you have a jbang script called `createissue.java` in the root of your project.
+
 ```
-uses: maxandersen/jbang-action
+jobs:
+    jbang:
+      runs-on: ubuntu-latest
+      name: A job to run jbang
+      steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: jbang
+        uses: maxandersen/jbang-action@v1
+        with:
+          script: createissue.java
+          args: "my world"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ISSUE_GITHUB_TOKEN }}
 ``
