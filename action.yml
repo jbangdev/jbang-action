@@ -1,4 +1,4 @@
-name: 'jbang'
+name: 'Java Scripting w/jbang'
 description: 'Run java as scripts with https:/github.com/maxandersen/jbang from your github repo'
 inputs:
   script:
