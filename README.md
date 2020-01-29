@@ -1,6 +1,6 @@
 # jbang github action
 
-Action is intended for quick and easily run java based scripts with https://github.com/maxandersen/jbang[jbang].
+Action is intended for quick and easily run java based scripts with [jbang](https://github.com/maxandersen/jbang).
 
 ## Inputs
 
@@ -10,9 +10,7 @@ Action is intended for quick and easily run java based scripts with https://gith
 
 Here it is assumed you have a jbang script called `createissue.java` in the root of your project.
 
-..github/workflows/main.yml
-[source,yaml]
-----
+```
 on: [push]
 
 jobs:
@@ -22,21 +20,18 @@ jobs:
       steps:
       - name: checkout
         uses: actions/checkout@v1
-      - uses: actions/cache@v1 <.>
+      - uses: actions/cache@v1
         with:
           path: /root/.jbang
           key: ${{ runner.os }}-jbang-${{ hashFiles('*.java') }}
           restore-keys: |
             ${{ runner.os }}-jbang-
       - name: jbang
-        uses: maxandersen/jbang-action@v3 <.>
+        uses: maxandersen/jbang-action@v3
         with:
-          script: createissue.java  <.>
+          script: createissue.java
           args: "my world"
         env:
           JBANG_REPO: /root/.jbang/repository
           GITHUB_TOKEN: ${{ secrets.ISSUE_GITHUB_TOKEN }}
-----
-<1> Enable caching of resolved dependencies to save time on consecutive runs
-<2> Setup `jbang-action`
-<3> Define script with parameters to use.``
+```
