@@ -37,24 +37,24 @@ Here it is assumed you have a jbang script called `createissue.java` in the root
 on: [push]
 
 jobs:
-    jbang:
-      runs-on: ubuntu-latest
-      name: A job to run jbang
-      steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - uses: actions/cache@v1
-        with:
-          path: /root/.jbang
-          key: ${{ runner.os }}-jbang-${{ hashFiles('*.java') }}
-          restore-keys: |
-            ${{ runner.os }}-jbang-
-      - name: jbang
-        uses: maxandersen/jbang-action@v3
-        with:
-          script: createissue.java
-          args: "my world"
-        env:
-          JBANG_REPO: /root/.jbang/repository
-          GITHUB_TOKEN: ${{ secrets.ISSUE_GITHUB_TOKEN }}
+	jbang:
+	runs-on: ubuntu-latest
+	name: A job to run jbang
+	steps:
+	- name: checkout
+		uses: actions/checkout@v1
+	- uses: actions/cache@v1
+		with:
+		path: /root/.jbang
+		key: ${{ runner.os }}-jbang-${{ hashFiles('*.java') }}
+		restore-keys: |
+			${{ runner.os }}-jbang-
+	- name: jbang
+		uses: maxandersen/jbang-action@v0.13.2.1
+		with:
+		script: createissue.java
+		args: "my world"
+		env:
+		JBANG_REPO: /root/.jbang/repository
+		GITHUB_TOKEN: ${{ secrets.ISSUE_GITHUB_TOKEN }}
 ```
