@@ -14,19 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Setup Debug Session
-        uses: P3TERX/debugger-action@master
-        
-      - name: Build image
-        if: success()
-        run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
-
       - name: Login to docker hub
         if: success()
         uses: actions-hub/docker/login@master
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build image
+        if: success()
+        run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
 
       - name: Publish to dockerhub
         if: success()
