@@ -1,12 +1,29 @@
-# jbang github action
+# J'Bang Container for Docker and Github Action
 
-Action is intended for quick and easily run java based scripts with [jbang](https://github.com/maxandersen/jbang).
+This container intended for quick and easily run java based scripts with [jbang](https://github.com/maxandersen/jbang).
 
-## Inputs
+Can be used directly with docker or as a GitHub Action
 
-## Outputs
+## Container/Docker usage
 
-## Example usage
+[![Docker Repository on Quay.io](https://quay.io/repository/maxandersen/jbang-action/status "Docker Repository on Quay.io")](https://quay.io/repository/jbang-action) [![](https://images.microbadger.com/badges/image/maxandersen/jbang-action.svg)](https://microbadger.com/images/maxandersen/jbang-action "Get your own image badge on microbadger.com") [![nodesource/node](http://dockeri.co/image/maxandersen/jbang-action)](https://registry.hub.docker.com/u/maxandersen/jbang-action/)
+
+Using dockerhub images:
+
+`docker run -v `pwd`:/ws --workdir=/ws maxandersen/jbang-action`
+
+Using quay.io images:
+
+`docker run -v `pwd`:/ws --workdir=/ws quay.io/maxandersen/jbang-action`
+
+
+## Github Action
+
+### Inputs
+
+### Outputs
+
+### Example usage
 
 Here it is assumed you have a jbang script called `createissue.java` in the root of your project.
 
