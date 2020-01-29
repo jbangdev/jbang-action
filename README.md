@@ -8,15 +8,19 @@ Can be used directly with docker or as a GitHub Action
 
 ## Container/Docker usage
 
-[![Docker Repository on Quay.io](https://quay.io/repository/maxandersen/jbang-action/status "Docker Repository on Quay.io")](https://quay.io/repository/jbang-action) [![](https://images.microbadger.com/badges/image/maxandersen/jbang-action.svg)](https://microbadger.com/images/maxandersen/jbang-action "Get your own image badge on microbadger.com") [![nodesource/node](http://dockeri.co/image/maxandersen/jbang-action)](https://registry.hub.docker.com/r/maxandersen/jbang-action)
+[![Docker Repository on Quay.io](https://quay.io/repository/maxandersen/jbang-action/status "Docker Repository on Quay.io")](https://quay.io/repository/maxandersen/jbang-action) [![](https://images.microbadger.com/badges/image/maxandersen/jbang-action.svg)](https://microbadger.com/images/maxandersen/jbang-action "Get your own image badge on microbadger.com") [![nodesource/node](http://dockeri.co/image/maxandersen/jbang-action)](https://registry.hub.docker.com/r/maxandersen/jbang-action)
 
 Using dockerhub images:
 
-`docker run -v `pwd`:/ws --workdir=/ws maxandersen/jbang-action helloworld.java`
+```
+docker run -v `pwd`:/ws --workdir=/ws maxandersen/jbang-action helloworld.java
+```
 
 Using quay.io images:
 
-`docker run -v `pwd`:/ws --workdir=/ws quay.io/maxandersen/jbang-action helloworld.java`
+```
+docker run -v `pwd`:/ws --workdir=/ws quay.io/maxandersen/jbang-action helloworld.java
+```
 
 
 ## Github Action
