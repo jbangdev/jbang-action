@@ -55,4 +55,19 @@ jobs:
         uses: actions-hub/docker@master
         with:
           args: push quay.io/maxandersen/jbang-action:${IMAGE_TAG}
+
+      - uses: actions/cache@v1
+        with:
+          path: /root/.jbang
+          key: ${{ runner.os }}-jbang-${{ hashFiles('*.java') }}
+          restore-keys: |
+            ${{ runner.os }}-jbang-
+    
+      - name: Update quay.io Description
+        uses: maxandersen/jbang-action@v3
+        with:
+          script: .github/workflows/updatequay.java
+          args: "--token $TOKEN"
+        env:
+          TOKEN: ${{ secrets.QUAY_TOKEN }}
       
