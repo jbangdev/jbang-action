@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Setup Debug Session
+        uses: P3TERX/debugger-action@master
+        
       - name: Build image
         if: success()
         run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
