@@ -1,4 +1,4 @@
-name: Deploy to docker hub
+name: Deploy to docker hub and quay.io
 
 on:
    push:
