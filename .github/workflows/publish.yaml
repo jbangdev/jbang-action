@@ -64,7 +64,7 @@ jobs:
             ${{ runner.os }}-jbang-
     
       - name: Update quay.io Description
-        uses: maxandersen/jbang-action@v3
+        uses: maxandersen/jbang-action@v3.1
         with:
           script: .github/workflows/updatequay.java
           args: "--token $TOKEN"
