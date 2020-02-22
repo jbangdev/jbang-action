@@ -50,7 +50,7 @@ jobs:
 		restore-keys: |
 			${{ runner.os }}-jbang-
 	- name: jbang
-		uses: maxandersen/jbang-action@v0.16.1
+		uses: maxandersen/jbang-action@v0.16.2
 		with:
 		script: createissue.java
 		args: "my world"
