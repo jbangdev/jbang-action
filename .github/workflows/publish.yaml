@@ -34,15 +34,15 @@ jobs:
         with:
           image: ${{ steps.image_name.outputs.image }}
           configFile: container-structure-test.yaml
-
+      
       - name: Publish to dockerhub
-        if: success()
+        if: success() && startsWith(github.ref, 'refs/tags/v')
         uses: actions-hub/docker@master
         with:
           args: push ${GITHUB_REPOSITORY}:${IMAGE_TAG}
       
       - name: Docker Hub Description
-        if: success() 
+        if: success() && startsWith(github.ref, 'refs/tags/v')
         uses: peter-evans/dockerhub-description@v2.1.0
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -57,23 +57,17 @@ jobs:
           DOCKER_REGISTRY_URL: quay.io
 
       - name: Build/tag image for Quay.io
-        if: success()
+        if: success() && startsWith(github.ref, 'refs/tags/v')
         run: docker build -t quay.io/jbangdev/jbang-action:${IMAGE_TAG} .
 
       - name: Publish to Quay.io
-        if: success()
+        if: success() && startsWith(github.ref, 'refs/tags/v')
         uses: actions-hub/docker@master
         with:
           args: push quay.io/jbangdev/jbang-action:${IMAGE_TAG}
 
-      - uses: actions/cache@v1
-        with:
-          path: /root/.jbang
-          key: ${{ runner.os }}-jbang-${{ hashFiles('**/*.java') }}
-          restore-keys: |
-            ${{ runner.os }}-jbang-
-    
       - name: Update quay.io Description
+        if: success() && startsWith(github.ref, 'refs/tags/v')
         uses: maxandersen/jbang-action@v3.1
         with:
           script: .github/workflows/updatequay.java
@@ -81,3 +75,10 @@ jobs:
         env:
           TOKEN: ${{ secrets.QUAY_TOKEN }}
       
+      - uses: actions/cache@v1
+        with:
+          path: /root/.jbang
+          key: ${{ runner.os }}-jbang-${{ hashFiles('**/*.java') }}
+          restore-keys: |
+            ${{ runner.os }}-jbang-
+    

@@ -5,7 +5,7 @@ branding:
   color: red
 inputs:
   jbangargs:
-      description: 'Args to pass to jbang, such as --trust=...'
+      description: 'Arguments for jbang'
       required: false
   script:
       description: 'Script file to run'
@@ -17,6 +17,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.jbangargs }}
+    - ${{ inputs.trust }}
     - ${{ inputs.script }}
     - ${{ inputs.args }}
