@@ -1,0 +1,26 @@
+schemaVersion: "2.0.0"
+
+# check that jbang is in the correct location
+fileExistenceTests:
+  - name: "jbang installation"
+    path: '/jbang/bin/jbang'
+    shouldExist: true 
+
+commandTests:
+  - name: "does basic jbang work"
+    command: "/jbang/bin/jbang"
+    expectedError:
+      - "Missing required parameter: <scriptOrFile>"
+      - "Website: https"
+  - name: "JBANG_VERSION has a version number"
+    command: "echo"
+    args: ["jb $JBANG_VERSION"]
+    expectedOutput: ["jb \\d+.\\d+\\d+"]
+  - name: "hello world via url"
+    command: "/jbang/bin/jbang"
+    args:
+        - "--trust=*"
+        - "https://github.com/jbangdev/jbang/blob/master/examples/helloworld.java"
+    expectedOutput:
+      - "Hello World!"
+

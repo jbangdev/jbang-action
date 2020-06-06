@@ -1,9 +1,12 @@
 name: 'Java Scripting w/jbang'
-description: 'Run java as scripts with https:/github.com/maxandersen/jbang from your github repo'
+description: 'Run java as scripts with https:/jbang.dev from your github repo'
 branding:
   icon: hash
   color: red
 inputs:
+  jbangargs:
+      description: 'Args to pass to jbang, such as --trust=...'
+      required: false
   script:
       description: 'Script file to run'
       required: true
@@ -14,5 +17,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.jbangargs }}
     - ${{ inputs.script }}
     - ${{ inputs.args }}

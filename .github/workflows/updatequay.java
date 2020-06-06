@@ -51,7 +51,7 @@ class updatequay implements Callable<Integer> {
 
     JsonNode jsonNode = objectMapper.readTree(payload);
     
-    String resp = Requests.put("https://quay.io/api/v1/repository/maxandersen/jbang-action")
+    String resp = Requests.put("https://quay.io/api/v1/repository/jbangdev/jbang-action")
                 .headers(headers)
                 .jsonBody(jsonNode)
                 .send().readToText();

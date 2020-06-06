@@ -21,9 +21,19 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Get Image Name
+        id: image_name
+        run: echo "##[set-output name=image;]$(echo $GITHUB_REPOSITORY:$IMAGE_TAG)"
+
       - name: Build image
         if: success()
         run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
+
+      - name: Test image
+        uses: brpaz/structure-tests-action@v1.1.2
+        with:
+          image: ${{ steps.image_name.outputs.image }}
+          configFile: container-structure-test.yaml
 
       - name: Publish to dockerhub
         if: success()
@@ -37,7 +47,7 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKERHUB_REPOSITORY: maxandersen/jbang-action
+          DOCKERHUB_REPOSITORY: jbangdev/jbang-action
 
       - name: Login to Quay.io
         uses: actions-hub/docker/login@master
@@ -48,13 +58,13 @@ jobs:
 
       - name: Build/tag image for Quay.io
         if: success()
-        run: docker build -t quay.io/maxandersen/jbang-action:${IMAGE_TAG} .
+        run: docker build -t quay.io/jbangdev/jbang-action:${IMAGE_TAG} .
 
       - name: Publish to Quay.io
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push quay.io/maxandersen/jbang-action:${IMAGE_TAG}
+          args: push quay.io/jbangdev/jbang-action:${IMAGE_TAG}
 
       - uses: actions/cache@v1
         with:
