@@ -4,7 +4,7 @@ This container intended for quick and easily run java based scripts with [jbang]
 
 Can be used directly with docker or as a GitHub Action.
 
-The `Dockerfile` source is located in [jbangdev/jbang](https://github.com/jbangdev/jbang/blob/master/src/main/scripts/container/Dockerfile) and are update in this repo on every tag/release of jbangdev/jbang. 
+The source is located in [jbangdev/jbang](https://github.com/jbangdev/jbang/blob/master/src/main/scripts/container/) and are update in this repo on every tag/release of jbangdev/jbang.
 
 [Source](https://github.com/jbangdev/jbang-action)
 
@@ -52,7 +52,7 @@ jobs:
 		restore-keys: |
 			${{ runner.os }}-jbang-
 	- name: jbang
-	  uses: jbangdev/jbang-action@v0.28.0
+      uses: jbangdev/jbang-action@v0.29.0
 	  with:
 		script: createissue.java
 		args: "my world"
