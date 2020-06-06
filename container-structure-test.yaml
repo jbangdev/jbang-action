@@ -17,9 +17,11 @@ commandTests:
     args: ["jb $JBANG_VERSION"]
     expectedOutput: ["jb \\d+.\\d+\\d+"]
   - name: "hello world via url"
-    command: "/jbang/bin/jbang"
+    command: "entrypoint"
+    envVars:
+      - key: INPUT_JBANGARGS
+        value: "--insecure --trust=*"
     args:
-        - "--trust=*"
         - "https://github.com/jbangdev/jbang/blob/master/examples/helloworld.java"
     expectedOutput:
       - "Hello World!"
