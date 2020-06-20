@@ -1,12 +1,12 @@
 FROM adoptopenjdk:11-jdk-hotspot
 
-RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.31.0/jbang-0.31.0.zip" --output jbang.zip \
+RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.32.0/jbang-0.32.0.zip" --output jbang.zip \
               && jar xf jbang.zip && rm jbang.zip && mv jbang-* jbang && chmod +x jbang/bin/jbang
 
 ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME /scripts
-ENV JBANG_VERSION 0.31.0
+ENV JBANG_VERSION 0.32.0
 
 RUN useradd -u 10001 -r -g 0 -m \
      -d ${SCRIPTS_HOME} -s /sbin/nologin -c "jbang user" jo \
