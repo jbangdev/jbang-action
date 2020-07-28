@@ -10,7 +10,7 @@ commandTests:
   - name: "does basic jbang work"
     command: "/jbang/bin/jbang"
     expectedError:
-      - "Missing required parameter: <scriptOrFile>"
+      - "Compiles and runs .java"
       - "Website: https"
   - name: "JBANG_VERSION has a version number"
     command: "echo"
@@ -18,9 +18,6 @@ commandTests:
     expectedOutput: ["jb \\d+.\\d+\\d+"]
   - name: "hello world via url"
     command: "entrypoint"
-    envVars:
-      - key: INPUT_JBANGARGS
-        value: "--insecure --trust=*"
     args:
         - "https://github.com/jbangdev/jbang/blob/master/examples/helloworld.java"
     expectedOutput:
