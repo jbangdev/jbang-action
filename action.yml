@@ -17,6 +17,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.trust }}
+    - ${{ inputs.jbangargs }}
     - ${{ inputs.script }}
     - ${{ inputs.args }}
