@@ -22,4 +22,20 @@ commandTests:
         - "https://github.com/jbangdev/jbang/blob/master/examples/helloworld.java"
     expectedOutput:
       - "Hello World!"
-
+  - name: "Does trust work"
+    envVars:
+      - key: INPUT_TRUST
+        value: https://github.com/jruby
+    command: "entrypoint"
+    expectedError:
+        - "Adding .https://github.com/jruby. to /jbang/.jbang/trusted-sources.json"
+  - name: "Does multiple arguments work"
+    envVars:
+      - key: INPUT_SCRIPT
+        value: hello@jbangdev
+      - key: INPUT_ARGS
+        value: Hello There
+    command: "entrypoint"
+    expectedOutput:
+       - "Hello Hello"
+       - "Hello There"

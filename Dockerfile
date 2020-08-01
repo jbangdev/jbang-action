@@ -21,6 +21,8 @@ VOLUME /scripts
 
 USER 10001
 
+ENV JBANG_DIR="/jbang/.jbang"
+
 ENV PATH="${PATH}:/jbang/bin"
 
 ## github action does not allow writing to $HOME thus routing this elsewhere

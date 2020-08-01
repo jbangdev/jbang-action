@@ -13,10 +13,10 @@ inputs:
   args:
       description: 'arguments to pass on to the script'
       required: false
+  trust:
+      description: "if present will be added to trust before running jbang"
+      required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.trust }}
-    - ${{ inputs.script }}
-    - ${{ inputs.args }}
+ 
