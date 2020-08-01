@@ -13,4 +13,4 @@ EOF
   rm /tmp/passwd
 fi
 
-exec jbang $INPUT_JBANGARGS "${@}"
+exec jbang ${INPUT_JBANGARGS:+"$INPUT_JBANGARGS"} "${@}"
