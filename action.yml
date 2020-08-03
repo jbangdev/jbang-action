@@ -1,5 +1,5 @@
 name: 'Java Scripting w/jbang'
-description: 'Run java as scripts with https:/jbang.dev from your github repo'
+description: 'Run Java as scripts with https://jbang.dev from your GitHub repo'
 branding:
   icon: hash
   color: red
