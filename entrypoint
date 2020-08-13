@@ -17,4 +17,5 @@ if [[ ! -z "$INPUT_TRUST" ]]; then
   jbang trust add $INPUT_TRUST
 fi
 
-exec jbang $INPUT_JBANGARGS $INPUT_SCRIPT $INPUT_ARGS "${@}"
+echo Executing jbang $INPUT_JBANGARGS $INPUT_SCRIPT $INPUT_ARGS
+exec jbang $INPUT_JBANGARGS $INPUT_SCRIPT $INPUT_ARGS
