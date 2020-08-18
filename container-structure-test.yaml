@@ -33,7 +33,7 @@ commandTests:
     envVars:
       - key: INPUT_SCRIPT
         value: hello@jbangdev
-      - key: INPUT_ARGS
+      - key: INPUT_SCRIPTARGS
         value: Hello There
     command: "entrypoint"
     expectedOutput:
