@@ -34,7 +34,7 @@ Key | Example | Description
 trust | `https://github.com/maxandersen` | Host pattern to add to be trusted before the script are executed.
 jbangargs | `--verbose` | Arguments to pass to jbang before the script.
 script | `hello.java` | File, URL or alias referring to script to run
-args | `--token ${GITHUB_TOKEN}` | Arguments to pass to the script. Note: due to how github actions + docker arguments containing spaces gets treated as seperate arguments no matter how much quoting is done. If you need argument with spaces better to extend the docker file and call jbang directly.
+scriptargs | `--token ${GITHUB_TOKEN}` | Arguments to pass to the script. Note: due to how github actions + docker arguments containing spaces gets treated as seperate arguments no matter how much quoting is done. If you need argument with spaces better to extend the docker file and call jbang directly.
 
 ### Outputs
 
@@ -59,10 +59,10 @@ jobs:
         restore-keys: |
             ${{ runner.os }}-jbang-
     - name: jbang
-      uses: jbangdev/jbang-action@v0.37.0
+      uses: jbangdev/jbang-action@v0.38.0
       with:
         script: createissue.java
-        args: "my world"
+        scriptargs: "my world"
       env:
         JBANG_REPO: /root/.jbang/repository
         GITHUB_TOKEN: ${{ secrets.ISSUE_GITHUB_TOKEN }}
