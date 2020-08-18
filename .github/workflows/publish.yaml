@@ -26,7 +26,7 @@ jobs:
         run: echo "##[set-output name=image;]$(echo $GITHUB_REPOSITORY:$IMAGE_TAG)"
 
       - name: Override tag for master
-        if: github.ref == 'ref/head/master'
+        if: github.ref == 'refs/heads/master'
         run: ::set-env name=IMAGE_TAG::master
 
       - name: Build image
