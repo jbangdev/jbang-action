@@ -25,24 +25,32 @@ jobs:
         id: image_name
         run: echo "##[set-output name=image;]$(echo $GITHUB_REPOSITORY:$IMAGE_TAG)"
 
+      - name: Override tag for master
+        if: startsWith(github.ref, 'refs/master')
+        run: ::set-env name=IMAGE_TAG::master
+
       - name: Build image
         if: success()
-        run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
+        run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} -t quay.io/jbangdev/jbang-action:${IMAGE_TAG} .
+
+      - name: Tag latest if v-release
+        if: success() && startsWith(github.ref, 'refs/tags/v')
+        run: docker build -t ${GITHUB_REPOSITORY}:latest -t quay.io/jbangdev/jbang-action:latest .
 
       - name: Test image
         uses: brpaz/structure-tests-action@v1.1.2
         with:
           image: ${{ steps.image_name.outputs.image }}
           configFile: container-structure-test.yaml
-      
+
       - name: Publish to dockerhub
-        if: success() && startsWith(github.ref, 'refs/tags/v')
+        if: success()
         uses: actions-hub/docker@master
         with:
-          args: push ${GITHUB_REPOSITORY}:${IMAGE_TAG}
-      
+          args: push ${GITHUB_REPOSITORY}
+
       - name: Docker Hub Description
-        if: success() && startsWith(github.ref, 'refs/tags/v')
+        if: success()
         uses: peter-evans/dockerhub-description@v2.1.0
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -56,27 +64,24 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
           DOCKER_REGISTRY_URL: quay.io
 
-      - name: Build/tag image for Quay.io
-        if: success() && startsWith(github.ref, 'refs/tags/v')
-        run: docker build -t quay.io/jbangdev/jbang-action:${IMAGE_TAG} .
 
       - name: Publish to Quay.io
-        if: success() && startsWith(github.ref, 'refs/tags/v')
+        if: success()
         uses: actions-hub/docker@master
         with:
-          args: push quay.io/jbangdev/jbang-action:${IMAGE_TAG}
+          args: push quay.io/jbangdev/jbang-action
 
       - name: Update quay.io Description
-        if: success() && startsWith(github.ref, 'refs/tags/v')
+        if: success()
         uses: maxandersen/jbang-action@v3.1
         with:
           script: .github/workflows/updatequay.java
           args: "--token $TOKEN"
         env:
           TOKEN: ${{ secrets.QUAY_TOKEN }}
-      
+
       - name: Github Release
-        if:  success() && startsWith(github.ref, 'refs/tags/v')
+        if:  success() ## && startsWith(github.ref, 'refs/tags/v')
         uses: ncipollo/release-action@v1
         with:
           body: "See https://github.com/jbangdev/jbang/releases/tag/${IMAGE_TAG}"
@@ -88,4 +93,3 @@ jobs:
           key: ${{ runner.os }}-jbang-${{ hashFiles('**/*.java') }}
           restore-keys: |
             ${{ runner.os }}-jbang-
-    
