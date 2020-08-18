@@ -27,7 +27,7 @@ jobs:
 
       - name: Override tag for master
         if: github.ref == 'refs/heads/master'
-        run: ::set-env name=IMAGE_TAG::master
+        run: echo '::set-env name=IMAGE_TAG::master'
 
       - name: Build image
         if: success()
