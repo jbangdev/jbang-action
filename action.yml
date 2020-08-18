@@ -10,7 +10,7 @@ inputs:
   script:
       description: 'Script file to run'
       required: true
-  args:
+  scriptargs:
       description: 'arguments to pass on to the script'
       required: false
   trust:

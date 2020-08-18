@@ -18,4 +18,4 @@ if [[ ! -z "$INPUT_TRUST" ]]; then
 fi
 
 echo jbang $INPUT_JBANGARGS $INPUT_SCRIPT $INPUT_ARGS "${@}"
-exec jbang $INPUT_JBANGARGS $INPUT_SCRIPT $INPUT_ARGS "${@}"
+exec jbang $INPUT_JBANGARGS $INPUT_SCRIPT $INPUT_SCRIPTARGS "${@}"
