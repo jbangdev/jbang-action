@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1    
-    - name: Build native-image images
+    - name: properties@jbangdev
       uses: jbangdev/jbang-action@v0.39.0
       with:
-        script: properties@jbang.dev
+        script: properties@jbangdev
