@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1    
     - name: Build native-image images
-      uses: jbangdev/jbang-action
+      uses: jbangdev/jbang-action@latest
       with:
         script: properties@jbang.dev
