@@ -1,0 +1,18 @@
+# This is a basic workflow to help you get started with Actions
+
+name: verify-githubaction
+
+on:
+  schedule:
+  - cron:  '*/15 * * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1    
+    - name: Build native-image images
+      uses: jbangdev/jbang-action
+      with:
+        script: properties@jbang.dev
