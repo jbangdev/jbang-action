@@ -10,7 +10,7 @@ commandTests:
   - name: "does basic jbang work"
     command: "/jbang/bin/jbang"
     expectedError:
-      - "Compiles and runs .java"
+      - "jbang is a tool for building and running"
       - "Website: https"
   - name: "JBANG_VERSION has a version number"
     command: "echo"
