@@ -1,12 +1,12 @@
 FROM adoptopenjdk:11-jdk-hotspot
 
-RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.50.0/jbang-0.50.0.zip" --output jbang.zip \
+RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.50.1/jbang-0.50.1.zip" --output jbang.zip \
               && jar xf jbang.zip && rm jbang.zip && mv jbang-* jbang && chmod +x jbang/bin/jbang
 
 ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME /scripts
-ENV JBANG_VERSION 0.50.0
+ENV JBANG_VERSION 0.50.1
 
 # Needed for secure run on openshift but breaks github actions
 # removed until can find better alternative
