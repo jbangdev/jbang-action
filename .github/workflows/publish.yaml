@@ -72,7 +72,7 @@ jobs:
 
       - name: Update quay.io Description
         if: success()
-        uses: maxandersen/jbang-action@v3.1
+        uses: jbangdev/jbang-action@0.49.0
         with:
           script: .github/workflows/updatequay.java
           args: "--token $TOKEN"
