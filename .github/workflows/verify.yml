@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1    
-    - name: properties@jbangdev
-      uses: jbangdev/jbang-action@v0.39.0
+    - name: properties@jbangdev from latest release
+      uses: jbangdev/jbang-action@latest
+      with:
+        script: properties@jbangdev
+    - name: properties@jbangdev from master
+      uses: jbangdev/jbang-action@master
       with:
         script: properties@jbangdev
