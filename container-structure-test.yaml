@@ -19,7 +19,7 @@ commandTests:
   - name: "hello world via url"
     command: "entrypoint"
     args:
-        - "https://github.com/jbangdev/jbang/blob/master/examples/helloworld.java"
+        - "https://github.com/jbangdev/jbang/blob/master/itests/helloworld.java"
     expectedOutput:
       - "Hello World!"
   - name: "Does trust work"
