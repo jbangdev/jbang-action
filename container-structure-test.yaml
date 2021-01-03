@@ -21,7 +21,7 @@ commandTests:
     args:
         - "https://github.com/jbangdev/jbang/blob/master/itests/helloworld.java"
     expectedOutput:
-      - "Hello World!"
+      - "Hello World"
   - name: "Does trust work"
     envVars:
       - key: INPUT_TRUST
