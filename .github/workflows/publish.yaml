@@ -3,7 +3,7 @@ name: Deploy to docker hub and quay.io
 on:
    push:
      branches:    
-      - master
+      - main
      tags:
        - 'v*'
 
@@ -21,10 +21,10 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Override tag for master
-        if: github.ref == 'refs/heads/master'
-        ##run: echo '::set-env name=IMAGE_TAG::master'
-        run: echo "name=IMAGE_TAG::master" >> $GITHUB_ENV
+      - name: Override tag for main
+        if: github.ref == 'refs/heads/main'
+        ##run: echo '::set-env name=IMAGE_TAG::main'
+        run: echo "name=IMAGE_TAG::main" >> $GITHUB_ENV
 
       - name: Get Image Name
         id: image_name

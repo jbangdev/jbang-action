@@ -17,7 +17,7 @@ jobs:
       uses: jbangdev/jbang-action@v0.59.0
       with:
         script: properties@jbangdev
-    - name: properties@jbangdev from master
-      uses: jbangdev/jbang-action@master
+    - name: properties@jbangdev from main
+      uses: jbangdev/jbang-action@main
       with:
         script: properties@jbangdev
