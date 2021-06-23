@@ -67,3 +67,20 @@ jobs:
         JBANG_REPO: /root/.jbang/repository
         GITHUB_TOKEN: ${{ secrets.ISSUE_GITHUB_TOKEN }}
 ```
+
+## Developing
+
+This project uses [container-structure-test](https://github.com/GoogleContainerTools/container-structure-test) for testing.
+Before contributing a fix to the project, build an image and run test to make sure it passes the container structured tests.
+
+To build:
+
+```
+docker build -t jbangdev/jbang-action .
+```
+
+To test:
+
+```
+container-structure-test test --image jbangdev/jbang-action --config container-structure-test.yaml
+```
