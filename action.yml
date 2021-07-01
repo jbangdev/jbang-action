@@ -18,5 +18,5 @@ inputs:
       required: false
 runs:
   using: 'docker'
-  image: 'docker://quay.io/jbangdev/jbang-action:0.72.0'
+  image: 'docker://ghcr.io/jbangdev/jbang-action:0.72.0'
  
