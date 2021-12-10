@@ -18,5 +18,4 @@ inputs:
       required: false
 runs:
   using: 'docker'
-  image: 'Dockerfile'
- 
+  image: 'docker://ghcr.io/jbangdev/jbang-action:0.84.1'

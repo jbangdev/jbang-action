@@ -1,27 +1,30 @@
 FROM adoptopenjdk:11-jdk-hotspot
 
-RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.84.1/jbang-0.84.1.zip" --output jbang.zip \
-              && jar xf jbang.zip && rm jbang.zip && mv jbang-* jbang && chmod +x jbang/bin/jbang
+LABEL "org.opencontainers.image.title"="jbang"
+LABEL "org.opencontainers.image.description"="Unleash the power of Java"
+LABEL "org.opencontainers.image.url"="https://jbang.dev"
+LABEL "org.opencontainers.image.licenses"="MIT"
+LABEL "org.opencontainers.image.version"="0.84.1"
+LABEL "org.opencontainers.image.revision"="a4905e7041480d3bcd6173ee4c69e6474188bd61"
+
+
+COPY assembly/* /
+
+RUN jar xf jbang-0.84.1.zip && \
+    rm jbang-0.84.1.zip && \
+    mv jbang-* jbang && \
+    chmod +x jbang/bin/jbang
+
+VOLUME /scripts
+
+ENV PATH="${PATH}:/jbang-0.84.1/bin"
 
 ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME /scripts
 ENV JBANG_VERSION 0.84.1
 
-# Needed for secure run on openshift but breaks github actions
-# removed until can find better alternative
-# RUN useradd -u 10001 -r -g 0 -m \
-#      -d ${SCRIPTS_HOME} -s /sbin/nologin -c "jbang user" jo \
-#    && chmod -R g+w /scripts \
-#    && chmod -R g+w /jbang \
-#    && chgrp -R root /scripts \
-#    && chgrp -R root /jbang \
-#    && chmod g+w /etc/passwd \
-#    && chmod +x /bin/entrypoint
-
 VOLUME /scripts
-
-# USER 10001
 
 ENV PATH="${PATH}:/jbang/bin"
 
