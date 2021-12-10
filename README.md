@@ -1,10 +1,5 @@
 # JBang Container for Docker and Github Action
 
-[![GitHub release badge](https://badgen.net/github/release/jbangdev/jbang-action/stable)](https://github.com/jbangdev/jbang-action/releases/latest)
-[![GitHub license badge](https://badgen.net/github/license/jbangdev/jbang-action)]()
-[![GitHub Workflows badge](https://badgen.net/runkit/maxandersen/61b3c9809073c8000ae9b210)](https://github.com/search?q=jbang-action+language%3AYAML+language%3AYAML+path%3A.github%2Fworkflows&type=Code&ref=advsearch&l=&l=)
-[![DockerHub Pulls](https://img.shields.io/docker/pulls/jbangdev/jbang-action)]()
-
 This container intended for quick and easily run java based scripts with [jbang](https://jbang.dev).
 
 Can be used directly with docker or as a GitHub Action.
@@ -14,6 +9,8 @@ The source is located in [jbangdev/jbang](https://github.com/jbangdev/jbang/blob
 [Source](https://github.com/jbangdev/jbang-action)
 
 ## Container/Docker usage
+
+[![Docker Repository on Quay.io](https://quay.io/repository/jbangdev/jbang-action/status "Docker Repository on Quay.io")](https://quay.io/repository/jbangdev/jbang-action) [![](https://images.microbadger.com/badges/image/jbangdev/jbang-action.svg)](https://microbadger.com/images/jbangdev/jbang-action "Get your own image badge on microbadger.com") [![nodesource/node](http://dockeri.co/image/jbangdev/jbang-action)](https://registry.hub.docker.com/r/jbangdev/jbang-action)
 
 Using dockerhub images:
 
@@ -62,7 +59,7 @@ jobs:
         restore-keys: |
             ${{ runner.os }}-jbang-
     - name: jbang
-      uses: jbangdev/jbang-action@v0.83.1
+      uses: jbangdev/jbang-action@v0.84.1
       with:
         script: createissue.java
         scriptargs: "my world"
