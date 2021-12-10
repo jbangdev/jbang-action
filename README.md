@@ -2,7 +2,7 @@
 
 [![GitHub release badge](https://badgen.net/github/release/jbangdev/jbang-action/stable)](https://github.com/jbangdev/jbang-action/releases/latest)
 [![GitHub license badge](https://badgen.net/github/license/jbangdev/jbang-action)]()
-[![GitHub Workflows badge](https://badgen.net/runkit/maxandersen/61b3c9809073c8000ae9b210)](https://github.com/search?q=jbang-action%3A.github%2Fworkflows%2F+language%3AYAML+language%3AYAML&type=Code&l=YAML)
+[![GitHub Workflows badge](https://badgen.net/runkit/maxandersen/61b3c9809073c8000ae9b210)](https://github.com/search?q=jbang-action+language%3AYAML+language%3AYAML+path%3A.github%2Fworkflows&type=Code&ref=advsearch&l=&l=)
 [![DockerHub Pulls](https://img.shields.io/docker/pulls/jbangdev/jbang-action)]()
 
 This container intended for quick and easily run java based scripts with [jbang](https://jbang.dev).
