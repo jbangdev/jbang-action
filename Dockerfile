@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jdk-hotspot
+FROM adoptopenjdk:16-jdk-hotspot
 
 RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.84.1/jbang-0.84.1.zip" --output jbang.zip \
               && jar xf jbang.zip && rm jbang.zip && mv jbang-* jbang && chmod +x jbang/bin/jbang
