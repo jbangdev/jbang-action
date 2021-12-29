@@ -17,16 +17,13 @@ RUN jar xf jbang-0.85.1.zip && \
 
 VOLUME /scripts
 
-ENV PATH="${PATH}:/jbang-0.85.1/bin"
-
 ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME /scripts
 ENV JBANG_VERSION 0.85.1
+ENV JBANG_PATH="/jbang/bin"
 
 VOLUME /scripts
-
-ENV PATH="${PATH}:/jbang/bin"
 
 ## github action does not allow writing to $HOME thus routing this elsewhere
 ENV JBANG_DIR="/jbang/.jbang"
