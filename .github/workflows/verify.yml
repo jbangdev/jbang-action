@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1    
     - name: properties@jbangdev from latest release
-      uses: jbangdev/jbang-action@v0.59.0
+      uses: jbangdev/jbang-action@v0.86.0
       with:
         script: properties@jbangdev
     - name: properties@jbangdev from main
