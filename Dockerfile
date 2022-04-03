@@ -23,6 +23,7 @@ ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME /scripts
 ENV JBANG_VERSION 0.92.2
+ENV JBANG_PATH=/jbang/bin
 
 VOLUME /scripts
 
