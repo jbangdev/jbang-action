@@ -50,7 +50,7 @@ Here it is assumed you have a jbang script called `createissue.java` in the root
 on: [push]
 
 jobs:
-    jbang:
+  jbang:
     runs-on: ubuntu-latest
     name: A job to run jbang
     steps:
@@ -63,7 +63,7 @@ jobs:
         restore-keys: |
             $-jbang-
     - name: jbang
-      uses: jbangdev/jbang-action@v0.96.1
+      uses: jbangdev/jbang-action@v0.96.3
       with:
         script: createissue.java
         scriptargs: "my world"
