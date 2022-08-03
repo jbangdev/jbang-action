@@ -75,7 +75,7 @@ jobs:
       - name: Update quay.io Description
         if: success()
         continue-on-error: true
-        uses: jbangdev/jbang-action@v0.96.1
+        uses: jbangdev/jbang-action@v0.49.0
         with:
           script: .github/workflows/updatequay.java
           args: "--token $TOKEN"
