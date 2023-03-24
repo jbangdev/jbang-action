@@ -4,25 +4,25 @@ LABEL "org.opencontainers.image.title"="jbang"
 LABEL "org.opencontainers.image.description"="Unleash the power of Java"
 LABEL "org.opencontainers.image.url"="https://jbang.dev"
 LABEL "org.opencontainers.image.licenses"="MIT"
-LABEL "org.opencontainers.image.version"="0.105.1"
-LABEL "org.opencontainers.image.revision"="1e13a0b0dec31361c5d99eaddb96f92820788972"
+LABEL "org.opencontainers.image.version"="0.105.2"
+LABEL "org.opencontainers.image.revision"="2448d0beccd520c956977bca78cc5cea24f4609a"
 
 
 COPY assembly/* /
 
-RUN jar xf jbang-0.105.1.zip && \
-    rm jbang-0.105.1.zip && \
+RUN jar xf jbang-0.105.2.zip && \
+    rm jbang-0.105.2.zip && \
     mv jbang-* jbang && \
     chmod +x jbang/bin/jbang
 
 VOLUME /scripts
 
-ENV PATH="${PATH}:/jbang-0.105.1/bin"
+ENV PATH="${PATH}:/jbang-0.105.2/bin"
 
 ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME /scripts
-ENV JBANG_VERSION 0.105.1
+ENV JBANG_VERSION 0.105.2
 ENV JBANG_PATH=/jbang/bin
 
 VOLUME /scripts
