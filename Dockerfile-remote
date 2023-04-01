@@ -4,17 +4,17 @@ LABEL "org.opencontainers.image.title"="jbang"
 LABEL "org.opencontainers.image.description"="Unleash the power of Java"
 LABEL "org.opencontainers.image.url"="https://jbang.dev"
 LABEL "org.opencontainers.image.licenses"="MIT"
-LABEL "org.opencontainers.image.version"="0.106.0"
-LABEL "org.opencontainers.image.revision"="010a613d9921003f807d8de5dd62e57e74850c3b"
+LABEL "org.opencontainers.image.version"="0.106.1"
+LABEL "org.opencontainers.image.revision"="8516294243004f4c0286ae578cbe964c76f5fce3"
 
 
-RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.106.0/jbang-0.106.0.zip" --output jbang-0.106.0.zip && \
-    unzip jbang-0.106.0.zip && \
-    rm jbang-0.106.0.zip && \
-    chmod +x jbang-0.106.0/bin/jbang
+RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.106.1/jbang-0.106.1.zip" --output jbang-0.106.1.zip && \
+    unzip jbang-0.106.1.zip && \
+    rm jbang-0.106.1.zip && \
+    chmod +x jbang-0.106.1/bin/jbang
 
 VOLUME /scripts
 
-ENV PATH="${PATH}:/jbang-0.106.0/bin"
+ENV PATH="${PATH}:/jbang-0.106.1/bin"
 
-ENTRYPOINT ["/jbang-0.106.0/bin/jbang"]
+ENTRYPOINT ["/jbang-0.106.1/bin/jbang"]
