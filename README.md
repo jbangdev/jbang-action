@@ -55,15 +55,15 @@ jobs:
     name: A job to run jbang
     steps:
     - name: checkout
-      uses: actions/checkout@v1
-    - uses: actions/cache@v1
+      uses: actions/checkout@v4
+    - uses: actions/cache@v4
       with:
         path: /root/.jbang
         key: $-jbang-$
         restore-keys: |
             $-jbang-
     - name: jbang
-      uses: jbangdev/jbang-action@v0.116.0
+      uses: jbangdev/jbang-action@v0.115.0
       with:
         script: createissue.java
         scriptargs: "my world"
