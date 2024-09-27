@@ -63,7 +63,7 @@ jobs:
         restore-keys: |
             $-jbang-
     - name: jbang
-      uses: jbangdev/jbang-action@v0.118.0
+      uses: jbangdev/jbang-action@v0.119.0
       with:
         script: createissue.java
         scriptargs: "my world"
