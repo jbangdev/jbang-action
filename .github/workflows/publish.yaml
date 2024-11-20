@@ -102,7 +102,7 @@ jobs:
           body: ${{ format('See https://github.com/jbangdev/jbang/releases/tag/{0}', env.IMAGE_TAG) }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/cache@v1
+      - uses: actions/cache@v2
         with:
           path: /root/.jbang
           key: ${{ runner.os }}-jbang-${{ hashFiles('**/*.java') }}
