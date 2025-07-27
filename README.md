@@ -9,7 +9,7 @@ This container intended for quick and easily run java based scripts with [jbang]
 
 Can be used directly with docker or as a GitHub Action.
 
-The source is located in [jbangdev/jbang](https://github.com/jbangdev/jbang/blob/HEAD/src/jreleaser/distributions/jbang/docker/) and are updated in this repo on every tag/release of jbangdev/jbang.
+The source is located in [jbangdev/jbang](https://github.com/jbangdev/jbang/blob/HEAD/src/jreleaser/distributions/jbang-action/docker/) and are updated in this repo on every tag/release of jbangdev/jbang.
 
 
 [Source](https://github.com/jbangdev/jbang-action)
@@ -63,7 +63,7 @@ jobs:
         restore-keys: |
             $-jbang-
     - name: jbang
-      uses: jbangdev/jbang-action@v0.126.3
+      uses: jbangdev/jbang-action@v0.128.2
       with:
         script: createissue.java
         scriptargs: "my world"
