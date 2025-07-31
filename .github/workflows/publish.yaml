@@ -1,9 +1,7 @@
-name: Deploy to docker hub and quay.io
+name: Update Docker Hub and Quay.io Description + github release
 
 on:
    push:
-     branches:    
-      - main
      tags:
        - 'v*'
 
@@ -13,42 +11,6 @@ jobs:
     
     steps:
       - uses: actions/checkout@master
-
-      - name: Login to docker hub
-        if: success()
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Override tag for main
-        if: github.ref == 'refs/heads/main'
-        ##run: echo '::set-env name=IMAGE_TAG::main'
-        run: echo "name=IMAGE_TAG::main" >> $GITHUB_ENV
-
-      - name: Get Image Name
-        id: image_name
-        run: echo "##[set-output name=image;]$(echo $GITHUB_REPOSITORY:$IMAGE_TAG)"
-
-      - name: Build image
-        if: success()
-        run: docker build -t jbangdev/jbang-action:${IMAGE_TAG} -t quay.io/jbangdev/jbang-action:${IMAGE_TAG} -t ghcr.io/jbangdev/jbang-action:${IMAGE_TAG} .
-
-      - name: Tag latest if v-release
-        if: success() && startsWith(github.ref, 'refs/tags/v')
-        run: docker build -t jbangdev/jbang-action:latest -t quay.io/jbangdev/jbang-action:latest -t ghcr.io/jbangdev/jbang-action:latest .
-
-      - name: Test image
-        uses: brpaz/structure-tests-action@v1.1.2
-        with:
-          image: ${{ steps.image_name.outputs.image }}
-          configFile: container-structure-test.yaml
-
-      - name: Publish to dockerhub
-        if: success()
-        uses: actions-hub/docker@master
-        with:
-          args: push jbangdev/jbang-action
 
       - name: Docker Hub Description
         if: success()
@@ -66,12 +28,6 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
           DOCKER_REGISTRY_URL: quay.io
 
-      - name: Publish to Quay.io
-        if: success()
-        uses: actions-hub/docker@master
-        with:
-          args: push quay.io/jbangdev/jbang-action
-
       - name: Update quay.io Description
         if: success()
         continue-on-error: true
@@ -82,24 +38,11 @@ jobs:
         env:
           TOKEN: ${{ secrets.QUAY_TOKEN }}
 
-      - name: Login to github
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ github.repository_owner }}
-          DOCKER_PASSWORD: ${{ secrets.CR_PAT }}
-          DOCKER_REGISTRY_URL: ghcr.io
-
-      - name: Publish to github
-        if: success()
-        uses: actions-hub/docker@master
-        with:
-          args: push ghcr.io/jbangdev/jbang-action
-
       - name: Github Release
         if:  success() && startsWith(github.ref, 'refs/tags/v')
         uses: ncipollo/release-action@v1
         with:
-          body: ${{ format('See https://github.com/jbangdev/jbang/releases/tag/{0}', env.IMAGE_TAG) }}
+          body: ${{ format('See https://github.com/jbangdev/jbang/releases/tag/v{0}', env.IMAGE_TAG) }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/cache@v4
