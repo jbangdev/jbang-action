@@ -4,16 +4,16 @@ LABEL "org.opencontainers.image.title"="jbang-action"
 LABEL "org.opencontainers.image.description"="Unleash the power of Java"
 LABEL "org.opencontainers.image.url"="https://jbang.dev"
 LABEL "org.opencontainers.image.licenses"="MIT"
-LABEL "org.opencontainers.image.version"="0.134.2"
-LABEL "org.opencontainers.image.revision"="a9a554d8ed41845ad9af5629551826db840aeb8e"
+LABEL "org.opencontainers.image.version"="0.134.3"
+LABEL "org.opencontainers.image.revision"="f1613d0c9750062cfba6c4926d099a9a993f3253"
 LABEL org.opencontainers.image.source=https://github.com/jbangdev/jbang-action
 
 
 COPY assembly/* /
 
 ## mkdir of .userPrefs is to fix https://github.com/jbangdev/jbang/issues/1831
-RUN jar xf jbang-0.134.2.zip && \
-    rm jbang-0.134.2.zip && \
+RUN jar xf jbang-0.134.3.zip && \
+    rm jbang-0.134.3.zip && \
     mv jbang-* jbang && \
     chmod +x jbang/bin/jbang && \
     mkdir -p $HOME/.java/.userPrefs
@@ -24,7 +24,7 @@ ENV PATH="${PATH}:/jbang/bin"
 ADD ./entrypoint /bin/entrypoint
 
 ENV SCRIPTS_HOME=/scripts
-ENV JBANG_VERSION=0.134.2
+ENV JBANG_VERSION=0.134.3
 ENV JBANG_PATH=/jbang/bin
 
 VOLUME /scripts
