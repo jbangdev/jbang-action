@@ -12,12 +12,12 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2    
+    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2    
     - name: properties@jbangdev from latest release
-      uses: jbangdev/jbang-action@v0.86.0
+      uses: jbangdev/jbang-action@2191f772ca08cbb6db44bc6374c122725acf216f # v0.86.0
       with:
         script: properties@jbangdev
     - name: properties@jbangdev from main
-      uses: jbangdev/jbang-action@main
+      uses: jbangdev/jbang-action@ff16f52fffad177d85a395fe8265e0882eaa5d6e # main
       with:
         script: properties@jbangdev
